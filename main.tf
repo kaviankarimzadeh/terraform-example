@@ -1,9 +1,5 @@
-resource "kubernetes_namespace" "terraform-namespace" {
-  metadata {
-    labels = {
-      mylabel = "terraform-namespace"
-    }
+data "kubernetes_all_namespaces" "allns" {}
 
-    name = "terraform-namespace"
-  }
+output "all-ns" {
+  value = data.kubernetes_all_namespaces.allns.namespaces
 }
